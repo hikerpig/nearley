@@ -266,3 +266,11 @@ describe('nearleyc: macros', () => {
     });
 
 })
+
+describe('nearleyc: ignore', () => {
+
+    it('get skipUnmatchSymbols from @skip_unmatch', () => {
+        const grammar = compile(read("test/grammars/skip_unmatch.ne"));
+        expect(grammar.options.skipUnmatchSymbols).toEqual([/\s+/])
+    })
+})

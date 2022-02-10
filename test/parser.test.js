@@ -263,4 +263,9 @@ describe('Parser: examples', () => {
             ].join("\n"))).toThrow(/line 15 col 9/)
     })
 
+    it('skip skipUnmatchSymbols when there is no match', () => {
+        const grammar = compile(read("test/grammars/skip_unmatch.ne"));
+        const p = parse(grammar, `( n ) `)
+        expect(p).toEqual([["(", "n", " ", ")"]])
+    })
 })

@@ -141,6 +141,7 @@ describe('bootstrapped parser', () => {
         check("@lexer moo")
         check('@include "foo"')
         check('@builtin "bar"')
+        check('@skip_unmatch %WS')
     })
 
     it('parses simple rules', () => {

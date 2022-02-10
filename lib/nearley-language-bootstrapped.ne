@@ -37,7 +37,7 @@ var rules = Object.assign({
 }, literals([
     ",", "|", "$", "%", "(", ")",
     ":?", ":*", ":+",
-    "@include", "@builtin", "@",
+    "@include", "@builtin", "@skip_unmatch", "@",
     "]",
 ]))
 
@@ -83,6 +83,7 @@ prod -> word _ %arrow _ expression+  {% function(d) { return {name: d[0], rules:
       | "@" word ws word  {% function(d) { return {config: d[1], value: d[3]}; } %}
       | "@include"  _ string {% function(d) {return {include: d[2].literal, builtin: false}} %}
       | "@builtin"  _ string {% function(d) {return {include: d[2].literal, builtin: true }} %}
+      | "@skip_unmatch"  _ "%" word {% function(d) {return {skipUnmatchSymbol: d[3] }} %}
 
 expression+ -> completeexpression
              | expression+ _ "|" _ completeexpression  {% function(d) { return d[0].concat([d[4]]); } %}
