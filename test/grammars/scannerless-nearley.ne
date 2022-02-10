@@ -30,6 +30,7 @@ prod -> word whit? ("-"|"="):+ ">" whit? expression+  {% function(d) { return {n
       | "@" word whit word  {% function(d) { return {config: d[1], value: d[3]}; } %}
       | "@include"  whit? string {% function(d) {return {include: d[2].literal, builtin: false}} %}
       | "@builtin"  whit? string {% function(d) {return {include: d[2].literal, builtin: true }} %}
+      | "@skip_unmatch"  whit? "%" word {% function(d) {return {ignoreSymbol: d[3] }} %}
 
 expression+ -> completeexpression
              | expression+ whit? "|" whit? completeexpression  {% function(d) { return d[0].concat([d[4]]); } %}
