@@ -1,5 +1,5 @@
 {
-  "name": "nearley",
+  "name": "@hikerpig/nearley",
   "version": "2.20.1",
   "description": "Simple, fast, powerful parser toolkit for JavaScript.",
   "main": "lib/nearley.js",
@@ -36,12 +36,12 @@
     "doctoc": "doctoc --notitle README.md",
     "profile": "bin/nearleyc.js test/grammars/parens.ne > test/grammars/parens.js && node test/profile.js"
   },
-  "author": "Hardmath123",
-  "contributors": "https://github.com/Hardmath123/nearley/graphs/contributors",
+  "author": "hikerpig",
+  "contributors": "https://github.com/hikerpig/nearley/graphs/contributors",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hardmath123/nearley.git"
+    "url": "https://github.com/hikerpig/nearley.git"
   },
   "devDependencies": {
     "@types/moo": "^0.3.0",
