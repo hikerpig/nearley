@@ -23,7 +23,7 @@ function typeScriptCheck(isStrict) {
     const {outPath, stdout, stderr} = externalNearleyc("grammars/typescript-test.ne", ".ts");
     expect(stderr).toBe("");
     expect(stdout).toBe("");
-    const spawnSync = sh(`tsc ${isStrict ? "--strict" : ""} ${outPath}.ts`);
+    const spawnSync = sh(`npx tsc ${isStrict ? "--strict" : ""} ${outPath}.ts`);
     expect(spawnSync.stdout).toBe(""); // type errors get logged to stdout, not stderr
     const grammar = nearley.Grammar.fromCompiled(require(`./${outPath}.js`).default);
     expect(parse(grammar, "<123>")).toEqual([ [ '<', '123', '>' ] ]);
@@ -65,7 +65,7 @@ describe("bin/nearleyc", function() {
         const {outPath, stdout, stderr} = externalNearleyc("grammars/coffeescript-test.ne", ".coffee");
         expect(stderr).toBe("");
         expect(stdout).toBe("");
-        sh(`coffee -c ${outPath}.coffee`);
+        sh(`npx coffee -c ${outPath}.coffee`);
         const grammar = nearley.Grammar.fromCompiled(require(`./${outPath}.js`));
         expect(parse(grammar, "ABCDEFZ12309")).toEqual([ [ 'ABCDEFZ', '12309' ] ]);
     });
